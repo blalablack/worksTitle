@@ -3,6 +3,7 @@ var body_width=$("body").css("width");
     		var mask = $(".mask");
     		var kuang = $(".kuang");
     		var wrap_items = $(".wrap_item");
+            var lis=$("#text li");
     		var i_m = wrap_items.length;
     		var m = 100 * i_m;//避免下面频繁赋值
     		//向右转
@@ -11,7 +12,11 @@ var body_width=$("body").css("width");
         		//暂时把所有的item的class去除掉
         		for (var i = 0; i < i_m; i++) {
         		    $(wrap_items[i]).removeClass();
+                    $(lis[i]).removeClass("on");
         		}
+                
+                $(lis[(m + 2) % i_m]).addClass("on");
+                
         		//每一个都赋予新的class
         		$(wrap_items[m % i_m]).attr("class", "wrap_item out");
         		$(wrap_items[(m + 1) % i_m]).attr("class", "wrap_item middle_left");
@@ -28,8 +33,11 @@ var body_width=$("body").css("width");
         		    m = 100 * i_m;
         		}
         		for (var i = 0; i < i_m; i++) {
-        		    $(wrap_items[i]).removeClass();
-        		}
+                    $(wrap_items[i]).removeClass();
+                    $(lis[i]).removeClass("on");
+                }
+                
+                $(lis[(m + 2) % i_m]).addClass("on");
         		$(wrap_items[m % i_m]).attr("class", "wrap_item out");
         		$(wrap_items[(m + 1) % i_m]).attr("class", "wrap_item middle_left");
         		$(wrap_items[(m + 2) % i_m]).attr("class", "wrap_item show");
